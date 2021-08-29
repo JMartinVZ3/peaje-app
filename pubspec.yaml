@@ -1,0 +1,86 @@
+name: peaje_client
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.2
+  # Paquete que nos permite guardar el json web token en el storage del telefono.
+  flutter_secure_storage: ^4.2.0
+  # Paquete que nos permite hacer peticiones HTTP
+  http: ^0.13.0
+  # Gestor de Estados de la Aplicacion
+  get: ^4.1.4
+  # Paquete que instala las fuentes de Google Fonts
+  google_fonts: ^2.1.0
+  # Paquete que ayuda a escribir mejor codigo
+  lint: ^1.5.3
+  # Paquete que utilizamos para medir KPI'S 
+  mixpanel_flutter: ^1.2.1
+  # Paquete para hacer tooltip de ayuda
+  super_tooltip: ^1.0.1
+  # Service locator
+  get_it: ^6.0.0
+  # Network Checker
+  connectivity_plus: ^1.0.6
+  # Launching Urls
+  url_launcher: ^6.0.4
+  # Value equality
+  equatable: ^2.0.3
+  # Functional programming thingies
+  dartz: ^0.10.0
+  # Paquete para poder utilizar google maps
+  google_maps_flutter: ^2.0.6
+  # Package that allows geolocating
+  geolocator: ^7.0.1
+  # Package that allows picking images
+  image_picker: ^0.7.5
+  mime_type: ^1.0.0
+  # Package that allows using svg in flutter
+  flutter_svg: ^0.22.0
+  # Package that makes dotted borders in containers
+  dotted_border: ^2.0.0+1
+  # Sirve para subir imagenes
+  cloudinary_public: ^0.8.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  #flutter_launcher_icons: ^0.9.0
+  #flutter_native_splash: ^1.2.0
+
+
+# flutter_icons:
+#  android: "launcher_icon"
+#  ios: true
+#  remove_alpha_ios: true
+#  image_path: "assets/icon/volvawhiteicon.png"
+#  adaptive_icon_background: "assets/icon/volvawhiteicon.png"
+
+
+# flutter_native_splash:
+#   color: "#13161B"
+#   image: "assets/volvadark.png"
+#   android: true
+#   ios: true
+flutter:
+
+  generate: true
+
+  uses-material-design: true
+
+  assets:
+    - assets/icons/
+    - assets/images/
