@@ -7,12 +7,12 @@ class AuthService {
   final String uri = Environment.apiUrl;
 
   /// Funcion que obtiene el token del dispositivo
-  static Future<String> getToken() async {
+  static Future<String?> getToken() async {
     final FlutterSecureStorage _storage = new FlutterSecureStorage();
 
     String? token = await _storage.read(key: 'token');
 
-    return token!;
+    return token;
   }
 
   /// Funcion que borra el token del dispositivo

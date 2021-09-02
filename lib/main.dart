@@ -17,8 +17,10 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Get.put(UserController());
     return GetMaterialApp(
+      onReady: () {
+        Get.put(UserController());
+      },
       debugShowCheckedModeBanner: false,
       title: 'Peaje Client',
       initialRoute: Routes.LOADING,

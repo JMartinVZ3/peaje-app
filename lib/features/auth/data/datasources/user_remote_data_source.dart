@@ -64,9 +64,15 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
   Future<UserModel> userIsLoggedIn() async {
     final endPoint = Uri.https(uri, 'api/v1/login/renew');
 
+    final String? token = await AuthService.getToken();
+
+    if (token == null) {
+      throw ServerException();
+    }
+
     final response = await http.get(endPoint, headers: {
       'Content-Type': 'application/json',
-      'x-token': await AuthService.getToken()
+      'x-token': token,
     });
 
     if (response.statusCode == 200) {
@@ -164,9 +170,15 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
   Future<bool> editUser({required User user}) async {
     final endPoint = Uri.https(uri, '/api/users/${user.uid}');
 
+    final String? token = await AuthService.getToken();
+
+    if (token == null) {
+      throw ServerException();
+    }
+
     final response = await http.put(endPoint, body: jsonEncode(user), headers: {
       'Content-Type': 'application/json',
-      'x-token': await AuthService.getToken()
+      'x-token': token,
     });
 
     if (response.statusCode == 200) {

@@ -51,11 +51,12 @@ class _DisplayUserImage extends StatelessWidget {
           Container(
             height: MediaQuery.of(context).size.height * 0.175,
             width: MediaQuery.of(context).size.height * 0.175,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(kBorderRadius * 2.5),
-              image: DecorationImage(
-                image: Image.network(user.photoUrl).image,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(kBorderRadius),
+              child: FadeInImage(
                 fit: BoxFit.cover,
+                image: Image.network(user.photoUrl).image,
+                placeholder: Image.asset('assets/images/loading.jpg').image,
               ),
             ),
           ),

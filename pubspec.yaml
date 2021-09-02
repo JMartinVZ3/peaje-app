@@ -44,6 +44,8 @@ dependencies:
   google_maps_flutter: ^2.0.6
   # Package that allows geolocating
   geolocator: ^7.0.1
+  # Paquete que verifica los permisos
+  permission_handler: ^8.1.4+2
   # Package that allows picking images
   image_picker: ^0.7.5
   mime_type: ^1.0.0
@@ -53,6 +55,8 @@ dependencies:
   dotted_border: ^2.0.0+1
   # Sirve para subir imagenes
   cloudinary_public: ^0.8.2
+  # Package that allows storing key value pairs
+  shared_preferences: ^2.0.7
 
 dev_dependencies:
   flutter_test:
@@ -84,3 +88,4 @@ flutter:
   assets:
     - assets/icons/
     - assets/images/
+    - assets/illustrations/

@@ -3,8 +3,10 @@ import 'package:get/get.dart';
 import 'package:peaje_client/common.dart';
 import 'package:peaje_client/features/home/view/controllers/home_controller.dart';
 import 'package:peaje_client/features/home/view/pages/account_page.dart';
-import 'package:peaje_client/features/home/view/pages/start_page.dart';
-import 'package:peaje_client/features/home/view/widgets/app_flow_dialog.dart';
+import 'package:peaje_client/features/home/view/pages/end_journey_page.dart';
+import 'package:peaje_client/features/home/view/pages/qr_journey_page.dart';
+import 'package:peaje_client/features/home/view/pages/start_journey_page.dart';
+import 'package:peaje_client/features/home/view/widgets/widgets.dart';
 
 class HomePage extends GetView<HomeController> {
   const HomePage({Key? key}) : super(key: key);
@@ -18,7 +20,7 @@ class HomePage extends GetView<HomeController> {
       bottomNavigationBar: _Navigation(controller: controller),
       floatingActionButton: GestureDetector(
         onTap: () {
-          appFlowDialog();
+          appFlowDialog(controller: controller);
         },
         child: Container(
           width: 75,
@@ -27,11 +29,35 @@ class HomePage extends GetView<HomeController> {
             borderRadius: BorderRadius.circular(kBorderRadius),
             color: PeajeColors.yellow,
           ),
-          child: Icon(
-            Icons.play_arrow_rounded,
-            size: kiconSize,
-            color: PeajeColors.darkGrey,
-          ),
+          child: Obx(() {
+            switch (controller.journeyState.value) {
+              case JourneyState.Start:
+                return Icon(
+                  Icons.play_arrow_rounded,
+                  size: kiconSize,
+                  color: PeajeColors.darkGrey,
+                );
+              case JourneyState.Qr:
+                return Icon(
+                  Icons.qr_code,
+                  size: kiconSize,
+                  color: PeajeColors.darkGrey,
+                );
+              case JourneyState.End:
+                return Icon(
+                  Icons.flag_rounded,
+                  size: kiconSize,
+                  color: PeajeColors.darkGrey,
+                );
+
+              default:
+                return Icon(
+                  Icons.play_arrow_rounded,
+                  size: kiconSize,
+                  color: PeajeColors.darkGrey,
+                );
+            }
+          }),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -67,13 +93,13 @@ class _Navigation extends StatelessWidget {
                 icon: Obx(
                   () => Icon(
                     Icons.car_repair,
-                    color: controller.pageState.value == PageState.Start
+                    color: controller.pageState.value == PageState.Journey
                         ? PeajeColors.white100
                         : PeajeColors.grey,
                   ),
                 ),
                 onPressed: () {
-                  controller.pageState.value = PageState.Start;
+                  controller.pageState.value = PageState.Journey;
                 },
               ),
             ),
@@ -112,13 +138,25 @@ class _Paginas extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       switch (controller.pageState.value) {
-        case PageState.Start:
-          return StartPage();
+        case PageState.Journey:
+          return Obx(() {
+            switch (controller.journeyState.value) {
+              case JourneyState.Start:
+                return StartJourneyPage();
+              case JourneyState.Qr:
+                return QrJourneyPage();
+              case JourneyState.End:
+                return EndJourneyPage();
+
+              default:
+                return StartJourneyPage();
+            }
+          });
 
         case PageState.Account:
           return AccountPage();
         default:
-          return StartPage();
+          return StartJourneyPage();
       }
     });
   }

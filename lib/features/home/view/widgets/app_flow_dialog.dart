@@ -1,22 +1,26 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:peaje_client/colors.dart';
-import 'package:peaje_client/common.dart';
+part of 'widgets.dart';
 
-void appFlowDialog() {
+void appFlowDialog({
+  required HomeController controller,
+}) {
   Get.dialog(Dialog(
     backgroundColor: PeajeColors.darkGrey,
     elevation: 2,
     shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(kBorderRadius * 2)),
-    child: _Body(),
+    child: _Body(
+      controller: controller,
+    ),
   ));
 }
 
 /// Widget que contiene el cuerpo del dialog
 class _Body extends StatelessWidget {
-  const _Body({Key? key}) : super(key: key);
+  final HomeController controller;
+  const _Body({
+    Key? key,
+    required this.controller,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,17 +30,263 @@ class _Body extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          StartJourneyButton(),
+          Obx(() {
+            switch (controller.cityState.value) {
+              case CityState.Portoviejo:
+                return Obx(() {
+                  switch (controller.journeyState.value) {
+                    case JourneyState.Start:
+                      return StartJourneyButton(
+                        controller: controller,
+                        enabled: true,
+                      );
+
+                    case JourneyState.Qr:
+                      return StartJourneyButton(
+                        controller: controller,
+                        enabled: false,
+                      );
+
+                    case JourneyState.End:
+                      return StartJourneyButton(
+                        controller: controller,
+                        enabled: false,
+                      );
+
+                    default:
+                      return StartJourneyButton(
+                        controller: controller,
+                      );
+                  }
+                });
+
+              case CityState.Guayaquil:
+                return Obx(() {
+                  switch (controller.journeyState.value) {
+                    case JourneyState.Start:
+                      return StartJourneyButton(
+                        controller: controller,
+                        enabled: true,
+                      );
+
+                    case JourneyState.Qr:
+                      return StartJourneyButton(
+                        controller: controller,
+                        enabled: false,
+                      );
+
+                    case JourneyState.End:
+                      return StartJourneyButton(
+                        controller: controller,
+                        enabled: false,
+                      );
+
+                    default:
+                      return StartJourneyButton(
+                        controller: controller,
+                      );
+                  }
+                });
+              default:
+                return Obx(() {
+                  switch (controller.journeyState.value) {
+                    case JourneyState.Start:
+                      return StartJourneyButton(
+                        controller: controller,
+                      );
+
+                    case JourneyState.Qr:
+                      return StartJourneyButton(
+                        controller: controller,
+                      );
+
+                    case JourneyState.End:
+                      return StartJourneyButton(
+                        controller: controller,
+                      );
+
+                    default:
+                      return StartJourneyButton(
+                        controller: controller,
+                      );
+                  }
+                });
+            }
+          }),
           Divider(
             color: PeajeColors.white100,
             thickness: 0.5,
           ),
-          GenerateQrButton(),
+          Obx(() {
+            switch (controller.cityState.value) {
+              case CityState.Portoviejo:
+                return Obx(() {
+                  switch (controller.journeyState.value) {
+                    case JourneyState.Start:
+                      return GenerateQrButton(
+                        controller: controller,
+                        enabled: false,
+                      );
+
+                    case JourneyState.Qr:
+                      return GenerateQrButton(
+                        controller: controller,
+                        enabled: true,
+                      );
+
+                    case JourneyState.End:
+                      return GenerateQrButton(
+                        controller: controller,
+                        enabled: true,
+                      );
+
+                    default:
+                      return GenerateQrButton(
+                        controller: controller,
+                      );
+                  }
+                });
+
+              case CityState.Guayaquil:
+                return Obx(() {
+                  switch (controller.journeyState.value) {
+                    case JourneyState.Start:
+                      return GenerateQrButton(
+                        controller: controller,
+                        enabled: false,
+                      );
+
+                    case JourneyState.Qr:
+                      return GenerateQrButton(
+                        controller: controller,
+                        enabled: true,
+                      );
+
+                    case JourneyState.End:
+                      return GenerateQrButton(
+                        controller: controller,
+                        enabled: true,
+                      );
+
+                    default:
+                      return GenerateQrButton(
+                        controller: controller,
+                      );
+                  }
+                });
+              default:
+                return Obx(() {
+                  switch (controller.journeyState.value) {
+                    case JourneyState.Start:
+                      return GenerateQrButton(
+                        controller: controller,
+                      );
+
+                    case JourneyState.Qr:
+                      return GenerateQrButton(
+                        controller: controller,
+                      );
+
+                    case JourneyState.End:
+                      return GenerateQrButton(
+                        controller: controller,
+                      );
+
+                    default:
+                      return GenerateQrButton(
+                        controller: controller,
+                      );
+                  }
+                });
+            }
+          }),
           Divider(
             color: PeajeColors.white100,
             thickness: 0.5,
           ),
-          EndJourneyButton(),
+          Obx(() {
+            switch (controller.cityState.value) {
+              case CityState.Portoviejo:
+                return Obx(() {
+                  switch (controller.journeyState.value) {
+                    case JourneyState.Start:
+                      return EndJourneyButton(
+                        controller: controller,
+                        enabled: false,
+                      );
+
+                    case JourneyState.Qr:
+                      return EndJourneyButton(
+                        controller: controller,
+                        enabled: false,
+                      );
+
+                    case JourneyState.End:
+                      return EndJourneyButton(
+                        controller: controller,
+                        enabled: true,
+                      );
+
+                    default:
+                      return EndJourneyButton(
+                        controller: controller,
+                      );
+                  }
+                });
+
+              case CityState.Guayaquil:
+                return Obx(() {
+                  switch (controller.journeyState.value) {
+                    case JourneyState.Start:
+                      return EndJourneyButton(
+                        controller: controller,
+                        enabled: false,
+                      );
+
+                    case JourneyState.Qr:
+                      return EndJourneyButton(
+                        controller: controller,
+                        enabled: true,
+                      );
+
+                    case JourneyState.End:
+                      return EndJourneyButton(
+                        controller: controller,
+                        enabled: true,
+                      );
+
+                    default:
+                      return EndJourneyButton(
+                        controller: controller,
+                      );
+                  }
+                });
+              default:
+                return Obx(() {
+                  switch (controller.journeyState.value) {
+                    case JourneyState.Start:
+                      return EndJourneyButton(
+                        controller: controller,
+                      );
+
+                    case JourneyState.Qr:
+                      return EndJourneyButton(
+                        controller: controller,
+                      );
+
+                    case JourneyState.End:
+                      return EndJourneyButton(
+                        controller: controller,
+                      );
+
+                    default:
+                      return EndJourneyButton(
+                        controller: controller,
+                      );
+                  }
+                });
+            }
+          }),
         ],
       ),
     );
@@ -45,19 +295,34 @@ class _Body extends StatelessWidget {
 
 /// Boton para comenzar el viaje del usuario
 class StartJourneyButton extends StatelessWidget {
-  const StartJourneyButton({Key? key}) : super(key: key);
+  final HomeController controller;
+  final bool enabled;
+  const StartJourneyButton({
+    Key? key,
+    required this.controller,
+    this.enabled = false,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: enabled
+          ? () {
+              /// Para cerrar el dialog
+              Get.back();
+
+              /// Para avanzar a la pagina de escoger ciudad
+              Get.toNamed(Routes.CHOOSE_CITY);
+              // controller.journeyState.value = JourneyState.Qr;
+            }
+          : () {},
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
             'Comenzar viaje',
             style: Get.textTheme.bodyText2!.copyWith(
-              color: Colors.white,
+              color: enabled ? Colors.white : PeajeColors.grey,
               fontSize: 16,
             ),
           ),
@@ -76,7 +341,7 @@ class StartJourneyButton extends StatelessWidget {
             ),
             child: Icon(
               Icons.play_arrow_rounded,
-              color: PeajeColors.white,
+              color: enabled ? Colors.white : PeajeColors.grey,
             ),
           ),
         ],
@@ -87,19 +352,33 @@ class StartJourneyButton extends StatelessWidget {
 
 /// Boton que genera el codigo qr que sera escaneado por el peaje
 class GenerateQrButton extends StatelessWidget {
-  const GenerateQrButton({Key? key}) : super(key: key);
+  final HomeController controller;
+  final bool enabled;
+  const GenerateQrButton({
+    Key? key,
+    required this.controller,
+    this.enabled = false,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: enabled
+          ? () {
+              /// Para cerrar el dialog
+              Get.back();
+
+              /// Para viajar a la pagina de generar Qr
+              Get.toNamed(Routes.GENERATE_QR);
+            }
+          : () {},
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
             'Generar Qr',
             style: Get.textTheme.bodyText2!.copyWith(
-              color: Colors.white,
+              color: enabled ? Colors.white : PeajeColors.grey,
               fontSize: 16,
             ),
           ),
@@ -118,7 +397,7 @@ class GenerateQrButton extends StatelessWidget {
             ),
             child: Icon(
               Icons.qr_code,
-              color: PeajeColors.white,
+              color: enabled ? Colors.white : PeajeColors.grey,
             ),
           ),
         ],
@@ -129,19 +408,41 @@ class GenerateQrButton extends StatelessWidget {
 
 /// Boton que sirve para finalizar el viaje
 class EndJourneyButton extends StatelessWidget {
-  const EndJourneyButton({Key? key}) : super(key: key);
+  final HomeController controller;
+  final bool enabled;
+  const EndJourneyButton({
+    Key? key,
+    required this.controller,
+    this.enabled = false,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        if (enabled) {
+          if (controller.cityState.value == CityState.Portoviejo) {
+            /// Para cerrar el dialog
+            Get.back();
+
+            /// Para validar si el usuario tiene la localizacion activa
+            controller.validateLocation();
+          } else {
+            /// Para cerrar el dialog
+            Get.back();
+
+            /// Para viajar a la pagina de generar Qr
+            Get.toNamed(Routes.GENERATE_QR);
+          }
+        }
+      },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
             'Terminar viaje',
             style: Get.textTheme.bodyText2!.copyWith(
-              color: Colors.white,
+              color: enabled ? Colors.white : PeajeColors.grey,
               fontSize: 16,
             ),
           ),
@@ -160,7 +461,7 @@ class EndJourneyButton extends StatelessWidget {
             ),
             child: Icon(
               Icons.flag_rounded,
-              color: PeajeColors.white,
+              color: enabled ? Colors.white : PeajeColors.grey,
             ),
           ),
         ],

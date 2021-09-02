@@ -20,9 +20,6 @@ class CustomSlide extends StatelessWidget {
           Expanded(
             child: widget,
           ),
-          SizedBox(
-            height: kDefaultPadding,
-          ),
           Text(
             this.title,
             style: Get.theme.textTheme.headline2,

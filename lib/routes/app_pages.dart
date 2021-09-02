@@ -14,7 +14,11 @@ import 'package:peaje_client/features/auth/view/pages/register_password_page.dar
 import 'package:peaje_client/features/auth/view/pages/register_profile_photo_page.dart';
 import 'package:peaje_client/features/auth/view/pages/slideshow_page.dart';
 import 'package:peaje_client/features/home/view/bindings/home_binding.dart';
+import 'package:peaje_client/features/home/view/pages/choose_city_page.dart';
+import 'package:peaje_client/features/home/view/pages/generate_qr_page.dart';
+import 'package:peaje_client/features/home/view/pages/gps_acces_page.dart';
 import 'package:peaje_client/features/home/view/pages/home_page.dart';
+import 'package:peaje_client/features/home/view/pages/mark_location_page.dart';
 import 'package:peaje_client/features/home/view/pages/user_identifier_page.dart';
 import 'package:peaje_client/features/home/view/pages/user_information_page.dart';
 part './app_routes.dart';
@@ -124,5 +128,35 @@ abstract class AppPages {
       page: () => UserInformationPage(),
       transition: Transition.native,
     ),
+
+    //! JOURNEY
+
+    /// Pagina en la que se escoge la ciudad
+    GetPage(
+      name: Routes.CHOOSE_CITY,
+      page: () => ChooseCityPage(),
+      transition: Transition.native,
+    ),
+
+    /// Pagina en la que se muestra el codigo Qr
+    GetPage(
+      name: Routes.GENERATE_QR,
+      page: () => GenerateQrPage(),
+      transition: Transition.native,
+    ),
+
+    /// Pagina en la que se escoge la localizacion
+    GetPage(
+      name: Routes.MARK_LOCATION,
+      page: () => MarkLocationPage(),
+      transition: Transition.native,
+    ),
+
+    /// Pagina en la que se escoge la localizacion
+    GetPage(
+      name: Routes.GPS_ACCESS,
+      page: () => GpsAccessPage(),
+      transition: Transition.native,
+    )
   ];
 }

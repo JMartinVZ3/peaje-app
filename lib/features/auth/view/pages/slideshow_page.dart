@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:peaje_client/core/widgets/widgets.dart';
 import 'package:peaje_client/features/auth/view/controllers/slideshow_controller.dart';
@@ -43,7 +44,11 @@ class MySlideshow extends StatelessWidget {
       slides: <Widget>[
         CustomSlide(
           widget: Container(
-            color: Colors.red,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                  image:
+                      Image.asset('assets/illustrations/artboard1.png').image),
+            ),
           ),
           title: 'Viaja a Guayaquil sin pagar peaje',
           description:
@@ -51,7 +56,11 @@ class MySlideshow extends StatelessWidget {
         ),
         CustomSlide(
           widget: Container(
-            color: Colors.red,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                  image:
+                      Image.asset('assets/illustrations/artboard2.png').image),
+            ),
           ),
           title: 'Para empezar',
           description:
@@ -59,14 +68,22 @@ class MySlideshow extends StatelessWidget {
         ),
         CustomSlide(
           widget: Container(
-            color: Colors.red,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                  image:
+                      Image.asset('assets/illustrations/artboard3.png').image),
+            ),
           ),
           title: 'Luego,',
           description: 'Activa tu ubicación y selecciona tu punto de partida',
         ),
         CustomSlide(
           widget: Container(
-            color: Colors.red,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                  image:
+                      Image.asset('assets/illustrations/artboard4.png').image),
+            ),
           ),
           title: 'Cuando llegues al peaje',
           description:
@@ -74,7 +91,11 @@ class MySlideshow extends StatelessWidget {
         ),
         CustomSlide(
           widget: Container(
-            color: Colors.red,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                  image:
+                      Image.asset('assets/illustrations/artboard1.png').image),
+            ),
           ),
           title: 'Después, cuando llegues a tu destino',
           description:

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:peaje_client/common.dart';
 
-class StartPage extends StatelessWidget {
-  const StartPage({Key? key}) : super(key: key);
+class StartJourneyPage extends StatelessWidget {
+  const StartJourneyPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +54,13 @@ class StartPage extends StatelessWidget {
             ),
             Expanded(
               flex: 10,
-              child: Placeholder(),
+              child: Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: Image.asset('assets/illustrations/artboard2.png')
+                          .image),
+                ),
+              ),
             ),
             Spacer(
               flex: 2,

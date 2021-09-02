@@ -16,7 +16,26 @@ class LoginPage extends GetView<LoginController> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Container(height: MediaQuery.of(context).size.height * 0.2),
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.2,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: MediaQuery.of(context).size.height * 0.12,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          clipBehavior: Clip.antiAlias,
+                          child: Image.asset(
+                            'assets/images/logogpmmanabi11.jpg',
+                            fit: BoxFit.contain,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
                 Container(
                     height: MediaQuery.of(context).size.height / 1.25,
                     decoration: BoxDecoration(

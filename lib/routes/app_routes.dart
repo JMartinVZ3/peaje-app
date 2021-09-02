@@ -43,4 +43,18 @@ abstract class Routes {
 
   /// Pagina del loading, la cual se abre al abrir la app
   static const USER_INFORMATION = '/user-information';
+
+  //! JOURNEY
+
+  /// Pagina en la que se escoge la ciudad de la que sale el usuario
+  static const CHOOSE_CITY = '/choose-city';
+
+  /// Pagina en la que se genera el codigo qr del usuario
+  static const GENERATE_QR = '/generate-qr';
+
+  /// Pagina en la que se escoge la localizacion del usuario
+  static const MARK_LOCATION = '/mark_location';
+
+    /// Pagina en la que se escoge la localizacion del usuario
+  static const GPS_ACCESS = '/gps_access';
 }
